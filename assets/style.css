@@ -1,71 +1,143 @@
-:root {
-  --bg-color: #e9f0fe;
+/* ===== Reset essencial ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+img, svg, video { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; }
+
+/* ===== Design tokens ===== */
+:root{
+  --accent-color: #6b5ee6;
   --text-color: #2f284a;
-  --accent-color: #2f284a;
-  --muted-color: #6b6b83;
-  --btn-bg: #2f284a;
+  --muted-color: #6b6b8d;
+  --bg: #e9f0fe;
+  --surface: #ffffff;
+  --border: #dfe6ff;
+
+  --btn-bg: var(--accent-color);
   --btn-text: #ffffff;
+
+  --radius: 12px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 10px rgba(0,0,0,.1);
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #e9f0fe;
-  color: #2f284a;
+/* Tema escuro (opcional) */
+[data-theme="dark"]{
+  --bg: #0f1222;
+  --surface: #151936;
+  --text-color: #e7e8ff;
+  --muted-color: #a8a9c7;
+  --border: #262a55;
+  --btn-bg: #7b6df0;
+}
+
+/* ===== Base ===== */
+body{
+  background: var(--bg);
+  color: var(--text-color);
   line-height: 1.6;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-header, nav, main, footer {
-  padding: 1rem;
+/* Remover padding global que entorta layout */
+header, nav, main, footer { padding: 0; }
+
+/* ===== Container e layout ===== */
+.wrap{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.topbar, .navbar {
-  display: flex;
+.layout{
+  display: grid;
+  grid-template-columns: 200px 1fr; /* social | conteúdo */
+  gap: 32px;
+  align-items: start;
+  padding-block: 32px;
+  min-height: calc(100vh - 72px); /* 72px = altura do header */
+}
+
+/* ===== Header sticky ===== */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: saturate(150%) blur(6px);
+}
+.topbar .wrap{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* brand | nav | toggle */
   align-items: center;
-  justify-content: space-between;
-  background: transparent;
+  height: 72px;
+  gap: 16px;
 }
 
-.brand a {
+.brand{ justify-self: start; }
+.brand a{
   font-weight: 800;
   color: var(--accent-color);
   text-decoration: none;
   font-size: 1.5rem;
 }
 
-.nav a {
+/* Nav centralizada */
+.nav{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.nav a{
   color: var(--text-color);
   text-decoration: none;
-  margin: 0 1rem;
   font-weight: 600;
-  transition: color 0.2s ease;
+  text-transform: lowercase;
+  transition: color .2s ease;
+}
+.nav a:hover{ color:#4a3f7a; }
+
+/* Toggle tema à direita */
+.theme-toggle{
+  justify-self: end;
+  padding: .4rem .7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-color);
+  cursor: pointer;
 }
 
+/* ===== Social ===== */
+.social ul{ list-style: none; display: grid; gap: 8px; }
+.social a{ color: var(--accent-color); text-decoration: none; }
+.social a:hover{ text-decoration: underline; }
 
-.nav a:hover {
-  color: #4a3f7a;
-  transition: 0.9s;
-}
-
-.title {
+/* ===== Tipografia e utilitários ===== */
+.title{
   color: var(--accent-color);
   font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 1rem;
   text-transform: lowercase;
+  margin-bottom: .5rem;
+}
+.subtitle, .muted{ color: var(--muted-color); }
+.text-lg{ font-size: 1.1rem; color: var(--text-color); max-width: 600px; }
+
+/* ===== Seções centrais ===== */
+.hero, .content{
+  display: grid;
+  justify-items: center;   /* centra horizontal */
+  align-content: start;    /* começa do topo; troque p/ center se quiser no meio vertical */
+  text-align: center;
+  gap: 12px;
 }
 
-.subtitle, .muted {
-  color: var(--muted-color);
-}
-
-.text-lg {
-  font-size: 1.1rem;
-  color: var(--text-color);
-  max-width: 600px;
-}
-
-.btn {
+/* ===== Botões e links ===== */
+.btn{
   display: inline-block;
   background: var(--btn-bg);
   color: var(--btn-text);
@@ -73,39 +145,65 @@ header, nav, main, footer {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: transform .1s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: var(--shadow-sm);
+  border: none;
 }
+.btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.link{ color: var(--accent-color); text-decoration: underline; }
+.link:hover{ color:#4a3f7a; }
 
-.btn:hover {
-  background: #4a3f7a;
-}
-
-.link {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
-.link:hover {
-  color: #4a3f7a;
-}
-
-.card {
-  background: #ffffff;
-  border: 1px solid #d5d9f2;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.grid {
+/* ===== Cards e grids ===== */
+.grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+  justify-items: center; /* centraliza cada card na coluna */
+}
+.card{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 360px;
+  transition: transform .2s ease, box-shadow .2s ease;
+  text-align: left;
+}
+.card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+/* ===== Formulário ===== */
+.form{
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  gap: 1rem;
+}
+.form .row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form input, .form textarea{
+  width: 100%;
+  padding: .8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-color);
+}
+.form button{ justify-self: center; }
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px){
+  .topbar .wrap{ grid-template-columns: 1fr auto; }
+  .theme-toggle{ display: none; }
+
+  .layout{
+    grid-template-columns: 1fr; /* social abaixo */
+  }
+  .social{ order: 2; justify-self: center; }
+  .form .row{ grid-template-columns: 1fr; }
 }
