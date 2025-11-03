@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ayrlla | Projetos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css" />
-<script defer src="./assets/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ayrlla | Projetos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+  <script defer src="assets/script.js"></script>
 </head>
 <body>
-<header class="topbar">
-<div class="brand"><a href="index.html">Ayrlla</a></div>
-<nav class="nav">
-<a href="index.html" data-page="home">home</a>
-<a href="sobre.html" data-page="sobre">sobre</a>
-<a href="projetos.html" data-page="projetos">projetos</a>
-<a href="contato.html" data-page="contato">contato</a>
-</nav>
-<button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">dia/noite</button>
-</header>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand"><a href="index.html">Ayrlla</a></div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html" data-page="home">home</a>
+        <a href="sobre.html" data-page="sobre">sobre</a>
+        <a href="projetos.html" data-page="projetos">projetos</a>
+        <a href="contato.html" data-page="contato">contato</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">dia/noite</button>
+    </div>
+  </header>
 
+  <main>
+    <div class="wrap">
+      <div class="layout">
+        <aside class="social" aria-label="Redes sociais">
+          <ul>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </aside>
 
-<main class="viewport no-scroll">
-<aside class="social">
-<ul>
-<li><a href="#">GitHub</a></li>
-<li><a href="#">LinkedIn</a></li>
-<li><a href="#">Instagram</a></li>
-</ul>
-</aside>
+        <section>
+          <h1 class="title">projetos</h1>
 
+          <div class="grid">
+            <article class="card">
+              <h2>Projeto 1</h2>
+              <p>Texto</p>
+              <a class="link" href="#">ver repo</a>
+            </article>
 
-<section class="Repositórios">
-<h1 class="title">projetos</h1>
-<div class="grid">
-<article class="card">
-<h2>Projeto 1 </h2>
-<p>Texto</p>
-<a class="link" href="#">ver repo</a>
-</article>
-<article class="card">
-<h2>Projeto 2</h2>
-<p>Texto</p>
-<a class="link" href="#">ver repo</a>
-</article>
-<article class="card">
-<h2>Projeto 3</h2>
-<p>Texto.</p>
-<a class="link" href="#">ver repo</a>
-</article>
-</div>
-</section>
+            <article class="card">
+              <h2>Projeto 2</h2>
+              <p>Texto</p>
+              <a class="link" href="#">ver repo</a>
+            </article>
 
-
-<div class="brace" aria-hidden="true"></div>
-</main>
+            <article class="card">
+              <h2>Projeto 3</h2>
+              <p>Texto.</p>
+              <a class="link" href="#">ver repo</a>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
