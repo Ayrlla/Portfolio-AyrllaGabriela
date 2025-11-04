@@ -1,78 +1,72 @@
 (function () {
-  const root = document.documentElement;
-  const btn = document.getElementById("themeToggle");
-  const favicon = document.getElementById("favicon");
-  if (!btn || !favicon) return;
+  const root  = document.documentElement;
+  const btn   = document.getElementById('themeToggle');
+  const icon  = document.getElementById('themeIcon');
+  if (!btn || !icon) return;
 
-  const stored = localStorage.getItem("theme");
-  if (stored) root.setAttribute("data-theme", stored);
-
-  const isDark = () => root.getAttribute("data-theme") === "dark";
-  const setFavicon = () => favicon.setAttribute("href", isDark() ? "assets/moon.svg" : "assets/sun.svg");
-  const setIcon = () => {
-    
-    const path = btn.querySelector("path");
-    if (!path) return;
-    if (isDark()) {
-      
-    }
+  const ICON = {
+    light: './imagens/brilho-do-sol.png',
+    dark:  './imagens/forma-de-meia-lua.png'
   };
 
-  setFavicon(); setIcon();
+  const stored      = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial     = stored || (prefersDark ? 'dark' : 'light');
 
-  btn.addEventListener("click", () => {
-    const next = isDark() ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    setFavicon(); setIcon();
+  const apply = (t) => {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    icon.src = ICON[t];
+    icon.alt = t === 'dark' ? 'tema escuro' : 'tema claro';
+  };
+
+  apply(initial);
+  btn.addEventListener('click', () => {
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 })();
 
 (function () {
-  const nav = document.querySelector(".nav");
-  const underline = document.querySelector(".nav-underline");
-  if (!nav || !underline) return;
+  const els = Array.from(document.querySelectorAll('.fade-up'));
+  if (!els.length) return;
 
-  const links = [...nav.querySelectorAll(".nav-link")];
-
-  function positionUnderline(el) {
-    const rect = el.getBoundingClientRect();
-    const navRect = nav.getBoundingClientRect();
-    underline.style.width = rect.width + "px";
-    underline.style.left = (rect.left - navRect.left) + "px";
-  }
-
-  positionUnderline(links[0]);
-
-  links.forEach(link => {
-    link.addEventListener("mouseenter", () => positionUnderline(link));
-  });
-  nav.addEventListener("mouseleave", () => positionUnderline(links[0]));
-
-  const about = document.getElementById("sobre");
-  if (about) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        const lnk = links.find(l => l.getAttribute("href") === "#sobre");
-        if (lnk) positionUnderline(lnk);
-      } else {
-        positionUnderline(links[0]); 
-      }
-    }, { rootMargin: "-40% 0px -40% 0px" });
-    io.observe(about);
-  }
-})();
-
-
-(function () {
-  const els = document.querySelectorAll(".reveal");
-  const io = new IntersectionObserver(entries => {
-    for (const e of entries) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add("is-visible");
+        e.target.classList.add('is-in');
         io.unobserve(e.target);
       }
-    }
-  }, { rootMargin: "0px 0px -10% 0px" });
+    });
+  }, { threshold: 0.14 });
+
   els.forEach(el => io.observe(el));
+})();
+
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Enviando…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        status.textContent = 'Mensagem enviada com sucesso! ✔';
+      } else {
+        const data = await res.json().catch(() => ({}));
+        status.textContent = (data?.errors?.[0]?.message) || 'Não foi possível enviar. Tente novamente.';
+      }
+    } catch {
+      status.textContent = 'Falha de rede. Verifique sua conexão.';
+    }
+  });
 })();

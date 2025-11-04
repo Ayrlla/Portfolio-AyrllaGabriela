@@ -1,63 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ayrlla | Projetos</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/style.css" />
   <script defer src="assets/script.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <div class="wrap">
-      <div class="brand"><a href="index.html">Ayrlla</a></div>
+    <div class="wrap topbar__inner">
+      <a class="brand" href="index.html">Ayrlla</a>
+
       <nav class="nav" aria-label="Navegação principal">
-        <a href="index.html" data-page="home">home</a>
-        <a href="index.html#sobre" data-page="sobre">sobre</a>
-        <a href="projetos.html" data-page="projetos">projetos</a>
-        <a href="contato.html" data-page="contato">contato</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="projetos.html" aria-current="page">Projetos</a>
+        <a href="contato.html">Contato</a>
       </nav>
+
       <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
-        <span class="icon">🌙</span>
+        <img id="themeIcon" src="assets/icon-sun.png" alt="tema claro" width="26" height="26">
       </button>
     </div>
   </header>
 
-  <main>
-    <div class="wrap">
-      <div class="layout">
-        <aside class="social" aria-label="Redes sociais">
-          <ul>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">Instagram</a></li>
-          </ul>
-        </aside>
+  <main class="wrap">
+    <div class="layout">
+      <aside class="social" aria-label="Redes sociais">
+        <ul>
+          <li><a href="#"><img src="imagens/linkedin.png" alt="">LinkedIn</a></li>
+          <li><a href="#"><img src="imagens/github.png" alt="">GitHub</a></li>
+        </ul>
+      </aside>
 
-        <section>
-          <h1 class="title">projetos</h1>
-          <div class="grid">
-            <article class="card">
-              <h2>Projeto 1</h2>
-              <p>Texto</p>
-              <a class="link" href="#">ver repo</a>
-            </article>
-            <article class="card">
-              <h2>Projeto 2</h2>
-              <p>Texto</p>
-              <a class="link" href="#">ver repo</a>
-            </article>
-            <article class="card">
-              <h2>Projeto 3</h2>
-              <p>Texto.</p>
-              <a class="link" href="#">ver repo</a>
-            </article>
-          </div>
-        </section>
-      </div>
+      <!-- Mantive sua estrutura e deixei bonita via CSS -->
+      <section id="s-projects" class="center-col section-projects">
+        <h1 class="title">Projetos</h1>
+
+        <div id="projects">
+          <article class="single-project">
+            <h3>Contador</h3>
+            <p>Criando um componente funcional com Vite.</p>
+            <a class="link-strong" href="https://github.com/Ayrlla/Contador" target="_blank" rel="noopener">Visualizar projeto</a>
+          </article>
+
+          <article class="single-project">
+            <h3>Cruzeiro</h3>
+            <p>Desafio de lógica de programação.</p>
+            <a class="link-strong" href="https://github.com/Ayrlla/CruzeiroMariah" target="_blank" rel="noopener">Visualizar projeto</a>
+          </article>
+
+          <article class="single-project">
+            <h3>Projeto Site Fantastika</h3>
+            <p>Página de Petshop.</p>
+            <a class="link-strong" href="https://github.com/Ayrlla/ProjetoFantastika" target="_blank" rel="noopener">Visualizar projeto</a>
+          </article>
+
+        <article class="single-project">
+         <img class="icon-cafe" src="./imagens/coffe-cup.png" alt="ícone xícara de café">
+         <h3>Em construção</h3>
+         <p>Pegue um café, estou desenvolvendo o projeto.</p>
+       </article>
+        </div>
+      </section>
     </div>
   </main>
 </body>
