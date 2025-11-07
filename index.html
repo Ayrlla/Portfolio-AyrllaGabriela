@@ -14,62 +14,63 @@
 </head>
 <body>
   <header class="topbar">
-  <div class="wrap topbar__inner">
-    <a class="brand" href="index.html">Ayrlla</a>
+    <div class="wrap topbar__inner">
+      <!-- Brand + ícone de estrelas ao lado do nome -->
+      <a class="brand" href="index.html">
+        <img class="brand-icon" src="imagens/brilhos.png" alt="" aria-hidden="true">
+        Ayrlla
+      </a>
 
-    <a class="brand" href="index.html">
-      <img src="imagens/brilhos.png" alt="brilhinho fofo" class="brand-icon">
-      
-    </a>
+      <!-- Navbar centralizada -->
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre" aria-current="page">Sobre</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="contato.html">Contato</a>
+      </nav>
 
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="#sobre" aria-current="page">Sobre</a>
-      <a href="projetos.html">Projetos</a>
-      <a href="contato.html">Contato</a>
-    </nav>
+      <!-- ÚNICO botão de tema -->
+      <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+        <img id="themeIcon" src="imagens/forma-de-meia-lua.png" alt="tema escuro" width="28" height="28">
+      </button>
+    </div>
+  </header>
 
-    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
-      <img id="themeIcon" src="./imagens/forma-de-meia-lua.png" alt="tema claro" width="26" height="26">
-    </button>
-  </div>
-</header>
-    
-<main class="wrap">
+  <main class="wrap">
     <div class="layout">
       <aside class="social" aria-label="Redes sociais">
         <ul>
           <li>
-  <a href="https://www.linkedin.com/in/ayrlla-gabriela-68372226a/" target="_blank">
-    <img src="imagens/linkedin.png" alt="">LinkedIn
-  </a>
-</li>
-      <li>
-  <a href="https://github.com/Ayrlla" target="_blank">
-    <img src="imagens/github.png" alt="">GitHub
-  </a>
-</li>
-
+            <a href="https://www.linkedin.com/in/ayrlla-gabriela-68372226a/" target="_blank" rel="noopener noreferrer">
+              <img src="imagens/linkedin.png" alt="">LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Ayrlla" target="_blank" rel="noopener noreferrer">
+              <img src="imagens/github.png" alt="">GitHub
+            </a>
+          </li>
+        </ul>
       </aside>
 
-      <section id="sobre" class="center-col about">
+      <section id="sobre" class="center-col about" data-reveal>
         <figure class="avatar">
-
-        <img class="avatar avatar-img" src="imagens/1.png" alt="Minha foto-perfil" width="300" height="300" loading="lazy">
+          <img class="avatar-img" src="imagens/1.png" alt="Minha foto-perfil" loading="lazy">
         </figure>
 
-        <h1 class="title fade-up">Sobre mim</h1>
+        <h1 class="title" data-reveal>Sobre mim</h1>
 
-        <p class="text-lg fade-up-delay">
-          Sou desenvolvedora <span class="highlight">full stack</span> e analista de sistemas, 24 anos, recém-formada, apaixonada por transformar ideias
-          em soluções funcionais e elegantes. Tenho interesse especial em <span class="highlight">engenharia de dados</span> e
-          <span class="highlight">computação quântica</span>. Curto estudar, ler e encarar desafios que unem <span class="highlight">lógica</span>, design e inovação.
+        <p class="text-lg" data-reveal>
+          Sou desenvolvedora <span class="highlight">full stack</span> e analista de sistemas, 24 anos, recém-formada,
+          apaixonada por transformar ideias em soluções funcionais e elegantes. Tenho interesse especial em
+          <span class="highlight">engenharia de dados</span> e <span class="highlight">computação quântica</span>.
+          Curto estudar, ler e encarar desafios que unem <span class="highlight">lógica</span>, design e inovação.
         </p>
 
-        <p class="muted fade-up-delay2">
+        <p class="muted" data-reveal>
           HTML, CSS, JavaScript, Python, SQL, Docker, análise de dados e full-stack em constante evolução.
         </p>
 
-        <a class="btn" href="docs/CV - AYRLLA.pdf" download>baixe meu cv</a>
+        <a class="btn" href="docs/CV - AYRLLA.pdf" download data-reveal>baixe meu cv</a>
       </section>
     </div>
   </main>
